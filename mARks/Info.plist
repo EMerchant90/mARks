@@ -22,10 +22,10 @@
 	<string>4</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>This application will use the camera for Augmented Reality.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Allow Map Usage</string>
+	<string>Allow Map Usage Always</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow Map Usage When In Use</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

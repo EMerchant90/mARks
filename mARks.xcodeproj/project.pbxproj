@@ -15,6 +15,7 @@
 		8F5453F21FCE1A640099DA03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F5453F01FCE1A640099DA03 /* LaunchScreen.storyboard */; };
 		8F5453FD1FCE1A640099DA03 /* mARksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5453FC1FCE1A640099DA03 /* mARksTests.swift */; };
 		8F5454081FCE1A640099DA03 /* mARksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5454071FCE1A640099DA03 /* mARksUITests.swift */; };
+		8FC88D911FD0B1010081EC8E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FC88D901FD0B0EA0081EC8E /* CoreLocation.framework */; };
 		8FF8B4431FCFD4860001E425 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF8B4421FCFD4860001E425 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		8F5454031FCE1A640099DA03 /* mARksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mARksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F5454071FCE1A640099DA03 /* mARksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mARksUITests.swift; sourceTree = "<group>"; };
 		8F5454091FCE1A640099DA03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FC88D901FD0B0EA0081EC8E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8FF8B4421FCFD4860001E425 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FC88D911FD0B1010081EC8E /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +140,7 @@
 		8FF95F2B1FCE2691000B0CB8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8FC88D901FD0B0EA0081EC8E /* CoreLocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

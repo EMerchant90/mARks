@@ -11,15 +11,13 @@ import MapKit
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
 
-    var locationManager: CLLocationManager!
+    @IBOutlet weak var mapView: MKMapView!
+    var locationManager: CLLocationManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.locationManager = CLLocationManager()
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.startUpdatingLocation()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
