@@ -21,11 +21,20 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MSz-zz-ITq">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-sE-5dh">
+                                <rect key="frame" x="329" y="748" width="30" height="30"/>
+                                <state key="normal" image="geolocation"/>
+                                <connections>
+                                    <action selector="dropPinCurrentLocation:" destination="mUi-UJ-iyE" eventType="touchUpInside" id="8xI-QT-j49"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MSz-zz-ITq" firstAttribute="top" secondItem="4WE-l4-Kpw" secondAttribute="top" id="8KB-Bx-ue6"/>
+                            <constraint firstItem="q0z-46-1ct" firstAttribute="trailing" secondItem="VGo-sE-5dh" secondAttribute="trailing" constant="16" id="G5X-BR-06U"/>
                             <constraint firstItem="MSz-zz-ITq" firstAttribute="trailing" secondItem="q0z-46-1ct" secondAttribute="trailing" id="Oxz-2G-Urx"/>
+                            <constraint firstItem="VGo-sE-5dh" firstAttribute="bottom" secondItem="q0z-46-1ct" secondAttribute="bottom" id="PFG-vq-2Tf"/>
                             <constraint firstAttribute="bottom" secondItem="MSz-zz-ITq" secondAttribute="bottom" id="lKB-t1-ntf"/>
                             <constraint firstItem="MSz-zz-ITq" firstAttribute="leading" secondItem="q0z-46-1ct" secondAttribute="leading" id="w8C-mV-MQL"/>
                         </constraints>
@@ -56,4 +65,7 @@
             <point key="canvasLocation" x="1212" y="137"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="geolocation" width="30" height="30"/>
+    </resources>
 </document>
