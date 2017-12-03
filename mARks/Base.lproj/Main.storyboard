@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mUi-UJ-iyE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1mW-T2-kxF">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-sE-5dh">
-                                <rect key="frame" x="329" y="748" width="30" height="30"/>
+                                <rect key="frame" x="329" y="93" width="30" height="30"/>
                                 <state key="normal" image="geolocation"/>
                                 <connections>
                                     <action selector="dropPinCurrentLocation:" destination="mUi-UJ-iyE" eventType="touchUpInside" id="8xI-QT-j49"/>
@@ -32,37 +32,46 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MSz-zz-ITq" firstAttribute="top" secondItem="4WE-l4-Kpw" secondAttribute="top" id="8KB-Bx-ue6"/>
-                            <constraint firstItem="q0z-46-1ct" firstAttribute="trailing" secondItem="VGo-sE-5dh" secondAttribute="trailing" constant="16" id="G5X-BR-06U"/>
                             <constraint firstItem="MSz-zz-ITq" firstAttribute="trailing" secondItem="q0z-46-1ct" secondAttribute="trailing" id="Oxz-2G-Urx"/>
-                            <constraint firstItem="VGo-sE-5dh" firstAttribute="bottom" secondItem="q0z-46-1ct" secondAttribute="bottom" id="PFG-vq-2Tf"/>
+                            <constraint firstItem="q0z-46-1ct" firstAttribute="trailing" secondItem="VGo-sE-5dh" secondAttribute="trailing" constant="16" id="UIB-KV-2pS"/>
+                            <constraint firstItem="VGo-sE-5dh" firstAttribute="top" secondItem="q0z-46-1ct" secondAttribute="top" constant="5" id="alH-Y1-R7L"/>
                             <constraint firstAttribute="bottom" secondItem="MSz-zz-ITq" secondAttribute="bottom" id="lKB-t1-ntf"/>
                             <constraint firstItem="MSz-zz-ITq" firstAttribute="leading" secondItem="q0z-46-1ct" secondAttribute="leading" id="w8C-mV-MQL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q0z-46-1ct"/>
                     </view>
+                    <navigationItem key="navigationItem" id="BwH-fh-1rr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="V87-OO-EFv">
+                            <connections>
+                                <action selector="searchButton:" destination="mUi-UJ-iyE" id="JFF-ZU-gLy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="MSz-zz-ITq" id="3jw-67-KdI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6Y-RN-oeM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-799.20000000000005" y="136.69950738916256"/>
+            <point key="canvasLocation" x="-456.80000000000001" y="136.69950738916256"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="tXr-a1-R10">
+        <!--Navigation Controller-->
+        <scene sceneID="ue0-Nj-sUk">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="mARks" customModuleProvider="target" sceneMemberID="viewController">
-                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arscnView>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1mW-T2-kxF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U8w-1r-1Gr">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
                     <connections>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <segue destination="mUi-UJ-iyE" kind="relationship" relationship="rootViewController" id="IKK-np-1ti"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZNc-aO-qcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="137"/>
+            <point key="canvasLocation" x="-1391" y="179"/>
         </scene>
     </scenes>
     <resources>
