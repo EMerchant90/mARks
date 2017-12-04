@@ -41,6 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    // MARK: Utility methods
+    
     func activeViewController() -> UIViewController {
         var topController = UIApplication.shared.keyWindow?.rootViewController
         while topController?.presentedViewController != nil {
@@ -54,7 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         errorAlert.addAction(UIAlertAction.init(title: "OK", style: .cancel, handler: nil))
         activeViewController().present(errorAlert, animated: true, completion: nil)
     }
-
 
 }
 
