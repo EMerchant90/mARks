@@ -22,7 +22,7 @@ class ARViewController: UIViewController, ARSKViewDelegate {
     let anchorDistFarthest: Float = 4
     
     let anchorDegreesNearest: Double = 0
-    let anchorDegreesFarthest: Double = 0
+    let anchorDegreesFarthest: Double = 15
     
 
     override func viewDidLoad() {

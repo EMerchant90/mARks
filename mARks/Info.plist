@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>CFBundleDocumentTypes</key>
-	<array/>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,8 +20,8 @@
 	<string>11</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Allow Map Usage Always</string>
+	<key>NSCameraUsageDescription</key>
+	<string>For Augmented Reality</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow Map Usage When In Use</string>
 	<key>UILaunchStoryboardName</key>

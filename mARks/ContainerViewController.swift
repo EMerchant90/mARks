@@ -51,6 +51,15 @@ class ContainerViewController: UIViewController {
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("request when in use auth")
+        locationManager.requestWhenInUseAuthorization()
+        if debugHeading == true {
+            startMotionTracking()
+        }
+    }
+    
     func addConstraintsFor(_ nestedView: UIView, width: CGFloat, idPrefix: String) {
         
         nestedView.translatesAutoresizingMaskIntoConstraints = false

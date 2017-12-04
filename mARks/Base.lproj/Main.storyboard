@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1mW-T2-kxF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lUq-8m-3cr">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,8 +76,8 @@
         <!--Container View Controller-->
         <scene sceneID="FWy-9c-RKp">
             <objects>
-                <viewController id="lUq-8m-3cr" customClass="ContainerViewController" customModule="AR_POI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="f8Y-dO-SI0" customClass="PassThroughView" customModule="AR_POI" customModuleProvider="target">
+                <viewController id="lUq-8m-3cr" customClass="ContainerViewController" customModule="mARks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f8Y-dO-SI0" customClass="PassThroughView" customModule="mARks" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -93,16 +93,15 @@
                                 <rect key="frame" x="0.0" y="718" width="375" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwp-yC-UVE">
-                                        <rect key="frame" x="84" y="20" width="207" height="21"/>
+                                        <rect key="frame" x="165.33333333333334" y="20" width="44.666666666666657" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="207" id="74C-NY-td1"/>
                                             <constraint firstAttribute="height" constant="21" id="YG2-Pd-naC"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voD-iJ-GJ6" customClass="CustomButton" customModule="AR_POI" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voD-iJ-GJ6" customClass="CustomButton" customModule="mARks" customModuleProvider="target">
                                         <rect key="frame" x="330" y="12" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="gMf-tp-Num"/>
@@ -144,7 +143,7 @@
         <!--View Controller-->
         <scene sceneID="ItC-Z0-ZfY">
             <objects>
-                <viewController storyboardIdentifier="arView" id="SGz-mj-qkT" customClass="ARViewController" customModule="AR_POI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="arView" id="SGz-mj-qkT" customClass="ARViewController" customModule="mARks" customModuleProvider="target" sceneMemberID="viewController">
                     <arskView key="view" contentMode="scaleToFill" id="cbQ-1X-Aao">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

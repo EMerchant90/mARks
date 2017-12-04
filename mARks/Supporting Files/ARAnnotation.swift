@@ -66,7 +66,7 @@ class ARAnnotation: UIView {
          make it fit and look as nice as
          possible in the tooltip */
         var labelText = title
-        let charCount = labelText.characters.count
+        let charCount = labelText.count
         if charCount > 70 {
             let strIndex = labelText.index(labelText.startIndex, offsetBy: 70)
             labelText = String(labelText[..<strIndex])
