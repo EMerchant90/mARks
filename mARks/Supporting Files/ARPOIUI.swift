@@ -423,7 +423,6 @@ public class ARPOIUI : NSObject {
         UIColor.darkGray.setFill()
         colorBoxPath.fill()
         
-        
         //// distance label Drawing
         let distanceLabelRect = CGRect(x: frame.minX + frame.width - 63, y: frame.minY + fastFloor((frame.height - 24) * 0.15217 + 0.5), width: 59, height: 24)
         let distanceLabelStyle = NSMutableParagraphStyle()
