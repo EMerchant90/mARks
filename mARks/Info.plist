@@ -26,9 +26,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.2.0</string>
+	<string>0.2.1</string>
 	<key>CFBundleVersion</key>
-	<string>13</string>
+	<string>14</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MKDirectionsApplicationSupportedModes</key>
@@ -37,11 +37,11 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>For Augmented Reality</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Requires location to pull photos from Flickr</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Requires location to pull photos from Flickr</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Requires location to pull photos from Flickr</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
