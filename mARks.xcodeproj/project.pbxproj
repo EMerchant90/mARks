@@ -28,6 +28,9 @@
 		8F6830BD1FD8AD42000A2C91 /* DroppablePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6830BC1FD8AD42000A2C91 /* DroppablePin.swift */; };
 		8F6830BF1FD8DFD2000A2C91 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6830BE1FD8DFD2000A2C91 /* PhotoCell.swift */; };
 		8FC88D911FD0B1010081EC8E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FC88D901FD0B0EA0081EC8E /* CoreLocation.framework */; };
+		8FCB0DE31FD9520000354649 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FCB0DE41FD9520000354649 /* Alamofire.framework */; };
+		8FCB0DE51FD9520800354649 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FCB0DE61FD9520800354649 /* AlamofireImage.framework */; };
+		8FCB0DE81FD9520E00354649 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FCB0DE71FD9520D00354649 /* ARKit.framework */; };
 		8FE1E5EB1FD62D2E007FB8F2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE1E5EA1FD62D2E007FB8F2 /* MapKit.framework */; };
 		8FF8B4431FCFD4860001E425 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF8B4421FCFD4860001E425 /* MapViewController.swift */; };
 		BA7ADFE4EB6D05630C50659B /* Pods_mARks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 728D11BFDA16963C0B9E0729 /* Pods_mARks.framework */; };
@@ -82,10 +85,16 @@
 		8F5454031FCE1A640099DA03 /* mARksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mARksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F5454071FCE1A640099DA03 /* mARksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mARksUITests.swift; sourceTree = "<group>"; };
 		8F5454091FCE1A640099DA03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F609C581FD9565600A459A9 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F6830BC1FD8AD42000A2C91 /* DroppablePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroppablePin.swift; sourceTree = "<group>"; };
 		8F6830BE1FD8DFD2000A2C91 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		8FC88D901FD0B0EA0081EC8E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8FCB0DE41FD9520000354649 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FCB0DE61FD9520800354649 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FCB0DE71FD9520D00354649 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		8FE1E5EA1FD62D2E007FB8F2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8FEE58591FD94FCE00B04FEB /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FEE585B1FD94FD500B04FEB /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF8B4421FCFD4860001E425 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B331023E343984C102895449 /* Pods-mARks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mARks.release.xcconfig"; path = "Pods/Target Support Files/Pods-mARks/Pods-mARks.release.xcconfig"; sourceTree = "<group>"; };
 		CF594F9F6099BE7AA9E29999 /* Pods_mARksUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mARksUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +106,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCB0DE81FD9520E00354649 /* ARKit.framework in Frameworks */,
+				8FCB0DE51FD9520800354649 /* AlamofireImage.framework in Frameworks */,
+				8FCB0DE31FD9520000354649 /* Alamofire.framework in Frameworks */,
 				8FE1E5EB1FD62D2E007FB8F2 /* MapKit.framework in Frameworks */,
 				8FC88D911FD0B1010081EC8E /* CoreLocation.framework in Frameworks */,
 				BA7ADFE4EB6D05630C50659B /* Pods_mARks.framework in Frameworks */,
@@ -213,6 +225,12 @@
 		8FF95F2B1FCE2691000B0CB8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8FCB0DE71FD9520D00354649 /* ARKit.framework */,
+				8FCB0DE61FD9520800354649 /* AlamofireImage.framework */,
+				8FCB0DE41FD9520000354649 /* Alamofire.framework */,
+				8F609C581FD9565600A459A9 /* Alamofire.framework */,
+				8FEE585B1FD94FD500B04FEB /* AlamofireImage.framework */,
+				8FEE58591FD94FCE00B04FEB /* Alamofire.framework */,
 				8FE1E5EA1FD62D2E007FB8F2 /* MapKit.framework */,
 				8FC88D901FD0B0EA0081EC8E /* CoreLocation.framework */,
 				728D11BFDA16963C0B9E0729 /* Pods_mARks.framework */,
@@ -444,9 +462,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-mARksUITests/Pods-mARksUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -492,9 +515,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-mARksTests/Pods-mARksTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -628,6 +656,11 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/**",
+					"$(inherited)",
+					$PODS_CONFIGURATION_BUILD_DIR/Alamofire,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -685,6 +718,11 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/**",
+					"$(inherited)",
+					$PODS_CONFIGURATION_BUILD_DIR/Alamofire,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import MapKit
-import CoreLocation
 import Alamofire
 import AlamofireImage
+import MapKit
+import CoreLocation
 
 class MapViewController: UIViewController, UIGestureRecognizerDelegate {
 
@@ -31,6 +31,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     var collectionView: UICollectionView?
     
     var imageUrlArray = [String]()
+    var imageArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func animateViewDown() {
+        cancelAllSessions()
         mapViewHeightConstraint.constant = 0
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -96,7 +98,6 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
         progressLabel?.font = UIFont(name: "Futura", size: 18)
         progressLabel?.textColor = #colorLiteral(red: 0.961902678, green: 0.650972724, blue: 0.1936408281, alpha: 1)
         progressLabel?.textAlignment = .center
-        progressLabel?.text = "12/24 Photos Loaded"
         collectionView?.addSubview(progressLabel!)
     }
     
@@ -136,6 +137,7 @@ extension MapViewController: MKMapViewDelegate {
         removePin()
         removeSpinner()
         removeProgessLabel()
+        cancelAllSessions()
         
         animateViewUp()
         addSwipe()
@@ -153,9 +155,16 @@ extension MapViewController: MKMapViewDelegate {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(touchCoordinate, regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
         
-        retrieveUrls(forAnnotation: annotation) { (true) in
-            print(self.imageUrlArray)
-
+        retrieveUrls(forAnnotation: annotation) { (finished) in
+            if finished {
+                self.retrieveImages(handler: { (finished) in
+                    if finished {
+                        self.removeSpinner()
+                        self.removeProgessLabel()
+                        //reload collectionView
+                    }
+                })
+            }
         }
         
         
@@ -170,7 +179,7 @@ extension MapViewController: MKMapViewDelegate {
     func retrieveUrls(forAnnotation annotation: DroppablePin, handler: @escaping (_ status: Bool) -> ()) {
         imageUrlArray = []
         
-        Alamofire.request(flickrUrl(forApiKey: flickrApiKey, withAnnotation: annotation, andNumberOfPhotos: 40)).responseJSON { (response) in
+        Alamofire.request(flickrUrl(forApiKey: flickrApiKey, withAnnotation: annotation, andNumberOfPhotos: 24)).responseJSON { (response) in
             print(response)
             guard let json = response.result.value as? Dictionary<String, AnyObject> else { return }
             let photosDict = json["photos"] as! Dictionary<String,AnyObject>
@@ -184,10 +193,31 @@ extension MapViewController: MKMapViewDelegate {
         
     }
     
+    func retrieveImages(handler: @escaping (_ status: Bool) -> ()) {
+        imageArray = []
+        
+        for url in imageUrlArray {
+            Alamofire.request(url).responseImage(completionHandler: { (response) in
+                guard let image = response.result.value else { return }
+                self.imageArray.append(image)
+                self.progressLabel?.text = "\(self.imageArray.count)/24 Images Downloaded"
+                
+                if self.imageArray.count == self.imageUrlArray.count {
+                    handler(true)
+                }
+            })
+        }
+        
+    }
     
-    
-}
+    func cancelAllSessions() {
+        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (sessionDataTask, uploadData, downloadData) in
+            sessionDataTask.forEach({ $0.cancel() })
+            downloadData.forEach({ $0.cancel() })
+        }
+    }
 
+}
 extension MapViewController: CLLocationManagerDelegate {
     //If we are authorized to use location
     func configureLocationServices() {
