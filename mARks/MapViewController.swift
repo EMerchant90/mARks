@@ -70,6 +70,28 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
         pullUpView.addSubview(spinner!)
     }
     
+    func removeSpinner() {
+        if spinner != nil {
+            spinner?.removeFromSuperview()
+        }
+    }
+    
+    func addProgressLabel() {
+        progressLabel = UILabel()
+        progressLabel?.frame = CGRect(x: (screenSize.width / 2) - 120, y: 175, width: 240, height: 40)
+        progressLabel?.font = UIFont(name: "Futura", size: 18)
+        progressLabel?.textColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
+        progressLabel?.textAlignment = .center
+        progressLabel?.text = "12/24 Photos Loaded"
+        pullUpView.addSubview(progressLabel!)
+    }
+    
+    func removeProgessLabel() {
+        if progressLabel != nil {
+            progressLabel?.removeFromSuperview()
+        }
+    }
+    
     @IBAction func dropPinCurrentLocation(_ sender: UIButton) {
         if authorizationStatus == .authorizedAlways || authorizationStatus == .authorizedWhenInUse {
             centerMapOnUserLocation()
@@ -98,9 +120,13 @@ extension MapViewController: MKMapViewDelegate {
     
     @objc func dropPin(sender: UITapGestureRecognizer) {
         removePin()
+        removeSpinner()
+        removeProgessLabel()
+        
         animateViewUp()
         addSwipe()
         addSpinner()
+        addProgressLabel()
         
         let touchPoint = sender.location(in: mapView)
         print(touchPoint)
