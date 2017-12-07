@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Map View Controller-->
         <scene sceneID="Lrc-ea-HYZ">
@@ -64,35 +69,14 @@
                                     <action selector="dropPinCurrentLocation:" destination="mUi-UJ-iyE" eventType="touchUpInside" id="8xI-QT-j49"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WJr-nU-TNP">
-                                <rect key="frame" x="186" y="648" width="42" height="67"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="AR">
-                                            <attributes>
-                                                <color key="NSColor" red="0.02237780783247232" green="0.19290398316062174" blue="0.035895630745291049" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <font key="NSFont" metaFont="system" size="31"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <connections>
-                                    <segue destination="lUq-8m-3cr" kind="show" id="BcF-ce-hnn"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Tfh-AK-DyH" firstAttribute="leading" secondItem="4WE-l4-Kpw" secondAttribute="leading" id="3w1-oq-BFd"/>
-                            <constraint firstItem="WJr-nU-TNP" firstAttribute="bottom" secondItem="VGo-sE-5dh" secondAttribute="bottom" id="8Ki-jg-kTK"/>
                             <constraint firstItem="q0z-46-1ct" firstAttribute="trailing" secondItem="VGo-sE-5dh" secondAttribute="trailing" constant="20" id="8ij-fW-vTr"/>
                             <constraint firstItem="iPA-GK-qTH" firstAttribute="leading" secondItem="q0z-46-1ct" secondAttribute="leading" id="AoM-J0-TtD"/>
                             <constraint firstItem="MSz-zz-ITq" firstAttribute="trailing" secondItem="4WE-l4-Kpw" secondAttribute="trailing" id="Co4-1W-yXr"/>
-                            <constraint firstItem="VGo-sE-5dh" firstAttribute="leading" secondItem="WJr-nU-TNP" secondAttribute="trailing" constant="98.329999999999998" id="Lzz-bF-tWn"/>
-                            <constraint firstItem="WJr-nU-TNP" firstAttribute="centerX" secondItem="4WE-l4-Kpw" secondAttribute="centerX" id="Nfp-o6-3fp"/>
                             <constraint firstItem="MSz-zz-ITq" firstAttribute="top" secondItem="4WE-l4-Kpw" secondAttribute="top" id="OrE-Tl-5Yw"/>
-                            <constraint firstItem="WJr-nU-TNP" firstAttribute="top" secondItem="VGo-sE-5dh" secondAttribute="top" id="PMM-gf-OuP"/>
                             <constraint firstItem="Tfh-AK-DyH" firstAttribute="top" secondItem="MSz-zz-ITq" secondAttribute="bottom" id="SFa-Nh-e0j"/>
                             <constraint firstItem="iPA-GK-qTH" firstAttribute="top" secondItem="4WE-l4-Kpw" secondAttribute="top" id="Xxr-v2-Mic"/>
                             <constraint firstAttribute="bottom" secondItem="Tfh-AK-DyH" secondAttribute="bottom" id="bnf-V0-ePj"/>
@@ -115,6 +99,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6Y-RN-oeM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-375.36231884057975" y="-508.69565217391306"/>
+        </scene>
+        <!--Pop View Controller-->
+        <scene sceneID="hZA-3E-xjT">
+            <objects>
+                <viewController storyboardIdentifier="PopVC" id="ouf-D9-bii" customClass="PopViewController" customModule="mARks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dAr-ff-byd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vP4-tS-gKv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tm5-aI-r01">
+                                <rect key="frame" x="82.666666666666686" y="691" width="250" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Double-tap to dismiss" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5b8-Ta-sQq">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
+                                        <color key="textColor" red="0.96190267799999996" green="0.65097272399999995" blue="0.1936408281" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="5b8-Ta-sQq" firstAttribute="centerY" secondItem="tm5-aI-r01" secondAttribute="centerY" id="E2e-si-a3i"/>
+                                    <constraint firstItem="5b8-Ta-sQq" firstAttribute="top" secondItem="tm5-aI-r01" secondAttribute="top" id="HBg-c1-Mz2"/>
+                                    <constraint firstItem="5b8-Ta-sQq" firstAttribute="leading" secondItem="tm5-aI-r01" secondAttribute="leading" id="PwG-4Z-zFl"/>
+                                    <constraint firstItem="5b8-Ta-sQq" firstAttribute="centerX" secondItem="tm5-aI-r01" secondAttribute="centerX" id="WDc-zC-aBa"/>
+                                    <constraint firstAttribute="width" constant="250" id="fDp-le-1rf"/>
+                                    <constraint firstAttribute="bottom" secondItem="5b8-Ta-sQq" secondAttribute="bottom" id="hgf-U0-xmM"/>
+                                    <constraint firstAttribute="height" constant="25" id="pJZ-Ct-lYD"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vP4-tS-gKv" firstAttribute="bottom" secondItem="rTf-vh-qL4" secondAttribute="bottom" id="4qy-jJ-L5m"/>
+                            <constraint firstItem="tm5-aI-r01" firstAttribute="centerX" secondItem="dAr-ff-byd" secondAttribute="centerX" id="IMt-KL-Egv"/>
+                            <constraint firstItem="vP4-tS-gKv" firstAttribute="leading" secondItem="rTf-vh-qL4" secondAttribute="leading" id="bvI-1P-AbO"/>
+                            <constraint firstItem="vP4-tS-gKv" firstAttribute="trailing" secondItem="rTf-vh-qL4" secondAttribute="trailing" id="p2x-86-I4A"/>
+                            <constraint firstItem="vP4-tS-gKv" firstAttribute="top" secondItem="dAr-ff-byd" secondAttribute="top" id="p3z-Dd-aYx"/>
+                            <constraint firstItem="rTf-vh-qL4" firstAttribute="bottom" secondItem="tm5-aI-r01" secondAttribute="bottom" constant="20" id="xIb-SX-Hbb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rTf-vh-qL4"/>
+                    </view>
+                    <connections>
+                        <outlet property="popImageView" destination="vP4-tS-gKv" id="fjc-UP-qaC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ov4-oT-Ops" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="544.92753623188412" y="-509.51086956521743"/>
         </scene>
         <!--Item-->
         <scene sceneID="FWy-9c-RKp">
@@ -159,7 +195,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                         <state key="normal" title="Map">
-                                            <color key="titleColor" red="0.11600490288393583" green="1" blue="0.18608029838037354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.96190267799999996" green="0.65097272399999995" blue="0.1936408281" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="mUi-UJ-iyE" kind="show" id="n9a-hL-F7J"/>

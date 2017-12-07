@@ -45,6 +45,8 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
         collectionView?.delegate = self
         collectionView?.dataSource = self
         
+        registerForPreviewing(with: self, sourceView: collectionView!)
+        
         pullUpView.addSubview(collectionView!)
     }
     
@@ -62,7 +64,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func animateViewUp() {
-        mapViewHeightConstraint.constant = 300
+        mapViewHeightConstraint.constant = 250
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
@@ -79,7 +81,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func addSpinner() {
         spinner = UIActivityIndicatorView()
-        spinner?.center = CGPoint(x: (screenSize.width / 2) - ((spinner?.frame.width)! / 2), y: 150)
+        spinner?.center = CGPoint(x: (screenSize.width / 2) - ((spinner?.frame.width)! / 2), y: 125)
         spinner?.activityIndicatorViewStyle = .whiteLarge
         spinner?.color = #colorLiteral(red: 0.961902678, green: 0.650972724, blue: 0.1936408281, alpha: 1)
         spinner?.startAnimating()
@@ -94,7 +96,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func addProgressLabel() {
         progressLabel = UILabel()
-        progressLabel?.frame = CGRect(x: (screenSize.width / 2) - 120, y: 175, width: 240, height: 40)
+        progressLabel?.frame = CGRect(x: (screenSize.width / 2) - 120, y: 145, width: 240, height: 40)
         progressLabel?.font = UIFont(name: "Futura", size: 18)
         progressLabel?.textColor = #colorLiteral(red: 0.961902678, green: 0.650972724, blue: 0.1936408281, alpha: 1)
         progressLabel?.textAlignment = .center
@@ -167,7 +169,6 @@ extension MapViewController: MKMapViewDelegate {
                         self.removeSpinner()
                         self.removeProgessLabel()
                         self.collectionView?.reloadData()
-                        //reload collectionView
                     }
                 })
             }
@@ -183,7 +184,8 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func retrieveUrls(forAnnotation annotation: DroppablePin, handler: @escaping (_ status: Bool) -> ()) {
-        Alamofire.request(flickrUrl(forApiKey: flickrApiKey, withAnnotation: annotation, andNumberOfPhotos: 30)).responseJSON { (response) in
+        Alamofire.request(flickrUrl(forApiKey: flickrApiKey, withAnnotation: annotation, andNumberOfPhotos: 28)).responseJSON { (response) in
+            print(flickrUrl)
             print(response)
             guard let json = response.result.value as? Dictionary<String, AnyObject> else { return }
             let photosDict = json["photos"] as! Dictionary<String,AnyObject>
@@ -198,11 +200,12 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func retrieveImages(handler: @escaping (_ status: Bool) -> ()) {
+        imageArray = []
         for url in imageUrlArray {
             Alamofire.request(url).responseImage(completionHandler: { (response) in
                 guard let image = response.result.value else { return }
                 self.imageArray.append(image)
-                self.progressLabel?.text = "\(self.imageArray.count)/30 Images Downloaded"
+                self.progressLabel?.text = "\(self.imageArray.count)/28 Images Downloaded"
                 
                 if self.imageArray.count == self.imageUrlArray.count {
                     handler(true)
@@ -252,8 +255,35 @@ extension MapViewController: UICollectionViewDelegate, UICollectionViewDataSourc
         cell.addSubview(imageView)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopViewController else { return }
+        popVC.initData(forImage: imageArray[indexPath.row])
+        present(popVC, animated: true, completion: nil)
+    }
 }
 
+extension MapViewController: UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = collectionView?.indexPathForItem(at: location), let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
+        
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopViewController else { return nil }
+        
+        popVC.initData(forImage: imageArray[indexPath.row])
+        
+
+        
+        previewingContext.sourceRect = cell.contentView.frame
+        return popVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self)
+    }
+    
+
+}
 
 
 

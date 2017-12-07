@@ -27,6 +27,7 @@
 		8F5454081FCE1A640099DA03 /* mARksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5454071FCE1A640099DA03 /* mARksUITests.swift */; };
 		8F6830BD1FD8AD42000A2C91 /* DroppablePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6830BC1FD8AD42000A2C91 /* DroppablePin.swift */; };
 		8F6830BF1FD8DFD2000A2C91 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6830BE1FD8DFD2000A2C91 /* PhotoCell.swift */; };
+		8FA5A1931FD9F9A900E140E2 /* PopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5A1921FD9F9A900E140E2 /* PopViewController.swift */; };
 		8FC88D911FD0B1010081EC8E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FC88D901FD0B0EA0081EC8E /* CoreLocation.framework */; };
 		8FCB0DE31FD9520000354649 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FCB0DE41FD9520000354649 /* Alamofire.framework */; };
 		8FCB0DE51FD9520800354649 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FCB0DE61FD9520800354649 /* AlamofireImage.framework */; };
@@ -88,6 +89,7 @@
 		8F609C581FD9565600A459A9 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F6830BC1FD8AD42000A2C91 /* DroppablePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroppablePin.swift; sourceTree = "<group>"; };
 		8F6830BE1FD8DFD2000A2C91 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		8FA5A1921FD9F9A900E140E2 /* PopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopViewController.swift; sourceTree = "<group>"; };
 		8FC88D901FD0B0EA0081EC8E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8FCB0DE41FD9520000354649 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FCB0DE61FD9520800354649 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +191,7 @@
 			children = (
 				8F5453E51FCE1A630099DA03 /* AppDelegate.swift */,
 				8FF8B4421FCFD4860001E425 /* MapViewController.swift */,
+				8FA5A1921FD9F9A900E140E2 /* PopViewController.swift */,
 				8F3D7B2B1FD5CACE005A0E19 /* ARViewController.swift */,
 				8F3D7B2D1FD5CAE8005A0E19 /* ContainerViewController.swift */,
 				8F6830BE1FD8DFD2000A2C91 /* PhotoCell.swift */,
@@ -556,6 +559,7 @@
 			files = (
 				8F6830BF1FD8DFD2000A2C91 /* PhotoCell.swift in Sources */,
 				8F3D7B241FD5CA71005A0E19 /* MatrixHelper.swift in Sources */,
+				8FA5A1931FD9F9A900E140E2 /* PopViewController.swift in Sources */,
 				8F3D7B281FD5CA8E005A0E19 /* keys.swift in Sources */,
 				8F3D7B2A1FD5CA9A005A0E19 /* CustomButton.swift in Sources */,
 				8F3D7B2E1FD5CAE8005A0E19 /* ContainerViewController.swift in Sources */,
