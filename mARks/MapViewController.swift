@@ -16,14 +16,17 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var mapViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var pullUpView: UIView!
     
-    var spinner: UIActivityIndicatorView?
-    var progressLabel: UILabel?
-    
     var locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
     let regionRadius: Double = 1000
     
     var screenSize = UIScreen.main.bounds
+    
+    var spinner: UIActivityIndicatorView?
+    var progressLabel: UILabel?
+    
+    var flowLayout = UICollectionViewFlowLayout()
+    var collectionView: UICollectionView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,13 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
         locationManager.delegate = self
         configureLocationServices()
         addDoubleTap()
+        
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+        collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        
+        pullUpView.addSubview(collectionView!)
     }
     
     func addDoubleTap() {
@@ -67,7 +77,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
         spinner?.activityIndicatorViewStyle = .whiteLarge
         spinner?.color = #colorLiteral(red: 0.961902678, green: 0.650972724, blue: 0.1936408281, alpha: 1)
         spinner?.startAnimating()
-        pullUpView.addSubview(spinner!)
+        collectionView?.addSubview(spinner!)
     }
     
     func removeSpinner() {
@@ -83,7 +93,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
         progressLabel?.textColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
         progressLabel?.textAlignment = .center
         progressLabel?.text = "12/24 Photos Loaded"
-        pullUpView.addSubview(progressLabel!)
+        collectionView?.addSubview(progressLabel!)
     }
     
     func removeProgessLabel() {
@@ -159,10 +169,23 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         centerMapOnUserLocation()
     }
-    
-    
 }
 
+extension MapViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell
+        
+        return cell!
+    }
+}
 
 
 
