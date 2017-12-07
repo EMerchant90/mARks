@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lUq-8m-3cr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mUi-UJ-iyE">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSz-zz-ITq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" mapType="standard" zoomEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSz-zz-ITq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="735"/>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iPA-GK-qTH">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iPA-GK-qTH" userLabel="OrangeView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHL-Vj-NTr">
@@ -47,8 +47,22 @@
                                     <constraint firstItem="lHL-Vj-NTr" firstAttribute="centerY" secondItem="iPA-GK-qTH" secondAttribute="centerY" constant="4.5" id="i8N-ZN-Nh6"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tfh-AK-DyH">
+                                <rect key="frame" x="0.0" y="735" width="414" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="HIg-oR-GUR"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-sE-5dh">
+                                <rect key="frame" x="326" y="648" width="68" height="67"/>
+                                <state key="normal" image="locationButton"/>
+                                <connections>
+                                    <action selector="dropPinCurrentLocation:" destination="mUi-UJ-iyE" eventType="touchUpInside" id="8xI-QT-j49"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WJr-nU-TNP">
-                                <rect key="frame" x="186" y="658" width="42" height="48"/>
+                                <rect key="frame" x="186" y="648" width="42" height="67"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="AR">
@@ -64,35 +78,25 @@
                                     <segue destination="lUq-8m-3cr" kind="show" id="BcF-ce-hnn"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tfh-AK-DyH">
-                                <rect key="frame" x="0.0" y="736" width="414" height="0.0"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-sE-5dh">
-                                <rect key="frame" x="327" y="639" width="67" height="67"/>
-                                <state key="normal" image="locationButton"/>
-                                <connections>
-                                    <action selector="dropPinCurrentLocation:" destination="mUi-UJ-iyE" eventType="touchUpInside" id="8xI-QT-j49"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Tfh-AK-DyH" firstAttribute="leading" secondItem="4WE-l4-Kpw" secondAttribute="leading" id="3w1-oq-BFd"/>
-                            <constraint firstItem="MSz-zz-ITq" firstAttribute="trailing" secondItem="q0z-46-1ct" secondAttribute="trailing" id="4QR-ow-drc"/>
-                            <constraint firstItem="MSz-zz-ITq" firstAttribute="bottom" secondItem="q0z-46-1ct" secondAttribute="bottom" id="7zC-5q-CQz"/>
+                            <constraint firstItem="WJr-nU-TNP" firstAttribute="bottom" secondItem="VGo-sE-5dh" secondAttribute="bottom" id="8Ki-jg-kTK"/>
                             <constraint firstItem="q0z-46-1ct" firstAttribute="trailing" secondItem="VGo-sE-5dh" secondAttribute="trailing" constant="20" id="8ij-fW-vTr"/>
                             <constraint firstItem="iPA-GK-qTH" firstAttribute="leading" secondItem="q0z-46-1ct" secondAttribute="leading" id="AoM-J0-TtD"/>
-                            <constraint firstItem="MSz-zz-ITq" firstAttribute="leading" secondItem="q0z-46-1ct" secondAttribute="leading" id="EOm-8L-EQg"/>
+                            <constraint firstItem="MSz-zz-ITq" firstAttribute="trailing" secondItem="4WE-l4-Kpw" secondAttribute="trailing" id="Co4-1W-yXr"/>
+                            <constraint firstItem="VGo-sE-5dh" firstAttribute="leading" secondItem="WJr-nU-TNP" secondAttribute="trailing" constant="98.329999999999998" id="Lzz-bF-tWn"/>
+                            <constraint firstItem="WJr-nU-TNP" firstAttribute="centerX" secondItem="4WE-l4-Kpw" secondAttribute="centerX" id="Nfp-o6-3fp"/>
                             <constraint firstItem="MSz-zz-ITq" firstAttribute="top" secondItem="4WE-l4-Kpw" secondAttribute="top" id="OrE-Tl-5Yw"/>
+                            <constraint firstItem="WJr-nU-TNP" firstAttribute="top" secondItem="VGo-sE-5dh" secondAttribute="top" id="PMM-gf-OuP"/>
                             <constraint firstItem="Tfh-AK-DyH" firstAttribute="top" secondItem="MSz-zz-ITq" secondAttribute="bottom" id="SFa-Nh-e0j"/>
                             <constraint firstItem="iPA-GK-qTH" firstAttribute="top" secondItem="4WE-l4-Kpw" secondAttribute="top" id="Xxr-v2-Mic"/>
+                            <constraint firstAttribute="bottom" secondItem="Tfh-AK-DyH" secondAttribute="bottom" id="bnf-V0-ePj"/>
                             <constraint firstItem="iPA-GK-qTH" firstAttribute="trailing" secondItem="q0z-46-1ct" secondAttribute="trailing" id="car-Cq-2ZR"/>
-                            <constraint firstItem="q0z-46-1ct" firstAttribute="bottom" secondItem="Tfh-AK-DyH" secondAttribute="bottom" id="heX-FL-XXb"/>
-                            <constraint firstItem="Tfh-AK-DyH" firstAttribute="centerX" secondItem="WJr-nU-TNP" secondAttribute="centerX" id="jOt-3A-gwA"/>
-                            <constraint firstItem="VGo-sE-5dh" firstAttribute="centerY" secondItem="WJr-nU-TNP" secondAttribute="centerY" constant="-9.5" id="mZg-YZ-Hgm"/>
+                            <constraint firstItem="MSz-zz-ITq" firstAttribute="leading" secondItem="4WE-l4-Kpw" secondAttribute="leading" id="imV-we-nMD"/>
                             <constraint firstAttribute="trailing" secondItem="Tfh-AK-DyH" secondAttribute="trailing" id="p7T-u9-yGO"/>
-                            <constraint firstItem="Tfh-AK-DyH" firstAttribute="top" secondItem="VGo-sE-5dh" secondAttribute="bottom" constant="30" id="xjN-dv-c2B"/>
+                            <constraint firstItem="Tfh-AK-DyH" firstAttribute="top" secondItem="VGo-sE-5dh" secondAttribute="bottom" constant="20" id="xOd-Bf-gQE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q0z-46-1ct"/>
                     </view>
@@ -101,6 +105,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="MSz-zz-ITq" id="3jw-67-KdI"/>
+                        <outlet property="mapViewHeightConstraint" destination="HIg-oR-GUR" id="Pwo-GI-mdF"/>
+                        <outlet property="pullUpView" destination="Tfh-AK-DyH" id="XGp-3P-VO4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6Y-RN-oeM" userLabel="First Responder" sceneMemberID="firstResponder"/>
