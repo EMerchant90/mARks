@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Alamofire
+import AlamofireImage
 
 class MapViewController: UIViewController, UIGestureRecognizerDelegate {
 
@@ -27,6 +29,8 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var flowLayout = UICollectionViewFlowLayout()
     var collectionView: UICollectionView?
+    
+    var imageUrlArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +94,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
         progressLabel = UILabel()
         progressLabel?.frame = CGRect(x: (screenSize.width / 2) - 120, y: 175, width: 240, height: 40)
         progressLabel?.font = UIFont(name: "Futura", size: 18)
-        progressLabel?.textColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
+        progressLabel?.textColor = #colorLiteral(red: 0.961902678, green: 0.650972724, blue: 0.1936408281, alpha: 1)
         progressLabel?.textAlignment = .center
         progressLabel?.text = "12/24 Photos Loaded"
         collectionView?.addSubview(progressLabel!)
@@ -148,6 +152,13 @@ extension MapViewController: MKMapViewDelegate {
                 
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(touchCoordinate, regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
+        
+        retrieveUrls(forAnnotation: annotation) { (true) in
+            print(self.imageUrlArray)
+
+        }
+        
+        
     }
     
     func removePin() {
@@ -155,6 +166,26 @@ extension MapViewController: MKMapViewDelegate {
             mapView.removeAnnotation(annotation)
         }
     }
+    
+    func retrieveUrls(forAnnotation annotation: DroppablePin, handler: @escaping (_ status: Bool) -> ()) {
+        imageUrlArray = []
+        
+        Alamofire.request(flickrUrl(forApiKey: flickrApiKey, withAnnotation: annotation, andNumberOfPhotos: 40)).responseJSON { (response) in
+            print(response)
+            guard let json = response.result.value as? Dictionary<String, AnyObject> else { return }
+            let photosDict = json["photos"] as! Dictionary<String,AnyObject>
+            let photosDictArray = photosDict["photo"] as! [Dictionary<String, AnyObject>]
+            for photo in photosDictArray {
+                let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_h_d.jpg"
+                self.imageUrlArray.append(postUrl)
+            }
+            handler(true)
+        }
+        
+    }
+    
+    
+    
 }
 
 extension MapViewController: CLLocationManagerDelegate {
