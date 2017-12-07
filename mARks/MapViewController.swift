@@ -139,6 +139,11 @@ extension MapViewController: MKMapViewDelegate {
         removeProgessLabel()
         cancelAllSessions()
         
+        imageUrlArray = []
+        imageArray = []
+        
+        collectionView?.reloadData()
+        
         animateViewUp()
         addSwipe()
         addSpinner()
@@ -161,6 +166,7 @@ extension MapViewController: MKMapViewDelegate {
                     if finished {
                         self.removeSpinner()
                         self.removeProgessLabel()
+                        self.collectionView?.reloadData()
                         //reload collectionView
                     }
                 })
@@ -177,9 +183,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func retrieveUrls(forAnnotation annotation: DroppablePin, handler: @escaping (_ status: Bool) -> ()) {
-        imageUrlArray = []
-        
-        Alamofire.request(flickrUrl(forApiKey: flickrApiKey, withAnnotation: annotation, andNumberOfPhotos: 24)).responseJSON { (response) in
+        Alamofire.request(flickrUrl(forApiKey: flickrApiKey, withAnnotation: annotation, andNumberOfPhotos: 30)).responseJSON { (response) in
             print(response)
             guard let json = response.result.value as? Dictionary<String, AnyObject> else { return }
             let photosDict = json["photos"] as! Dictionary<String,AnyObject>
@@ -194,13 +198,11 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func retrieveImages(handler: @escaping (_ status: Bool) -> ()) {
-        imageArray = []
-        
         for url in imageUrlArray {
             Alamofire.request(url).responseImage(completionHandler: { (response) in
                 guard let image = response.result.value else { return }
                 self.imageArray.append(image)
-                self.progressLabel?.text = "\(self.imageArray.count)/24 Images Downloaded"
+                self.progressLabel?.text = "\(self.imageArray.count)/30 Images Downloaded"
                 
                 if self.imageArray.count == self.imageUrlArray.count {
                     handler(true)
@@ -239,13 +241,16 @@ extension MapViewController: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        // number of items in array
+        return imageArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell
-        
-        return cell!
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell else {return UICollectionViewCell() }
+        let imageFromIndex = imageArray[indexPath.row]
+        let imageView = UIImageView(image: imageFromIndex)
+        cell.addSubview(imageView)
+        return cell
     }
 }
 
