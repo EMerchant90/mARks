@@ -15,7 +15,7 @@ struct PlaceLoader {
     func requestPOIsWithGoogleSearch(term: String, location: CLLocation, completion: @escaping (_ items:[[String : Any]]?, _ errorMsg: String?) -> Void) {
         
         let gMapsUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
-        let radiusMeters = 10000
+        let radiusMeters = 1000
         let language = "en"
         
         let params = [

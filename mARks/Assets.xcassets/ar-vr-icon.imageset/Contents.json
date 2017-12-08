@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "ar-vr-icon.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ARicon.png",
       "scale" : "2x"
     },
     {
