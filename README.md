@@ -13,10 +13,11 @@ There are two types of ways to find new areas of interest:
 
 
 #Screenshots
-https://user-images.githubusercontent.com/12518835/33756815-0901d90a-dbac-11e7-9f39-2cfade348050.jpeg
 
-https://user-images.githubusercontent.com/12518835/33756820-09bae346-dbac-11e7-9556-8a2b1bfafe88.jpeg
+![alt text](33756815-0901d90a-dbac-11e7-9f39-2cfade348050.jpeg "Description goes here")
 
-https://user-images.githubusercontent.com/12518835/33756819-09946900-dbac-11e7-9700-8a1ef7348f17.jpeg
+![alt text](33756820-09bae346-dbac-11e7-9556-8a2b1bfafe88.jpe "Description goes here")
 
-https://user-images.githubusercontent.com/12518835/33756817-09448624-dbac-11e7-8538-15dc2bfac362.jpeg
+![alt text](12518835/33756819-09946900-dbac-11e7-9700-8a1ef7348f17.jpeg "Description goes here")
+
+![alt text](12518835/33756817-09448624-dbac-11e7-8538-15dc2bfac362.jpeg "Description goes here")
