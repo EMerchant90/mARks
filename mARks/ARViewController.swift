@@ -53,6 +53,7 @@ class ARViewController: UIViewController, ARSKViewDelegate {
         sceneView.session.run(config)
     }
     
+    
     // MARK: - POIs
     
     func getAndDisplayItemsAroundLocation(_ location: CLLocation, completion:

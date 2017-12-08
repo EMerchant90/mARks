@@ -26,6 +26,41 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" mapType="standard" zoomEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSz-zz-ITq">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="735"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tfh-AK-DyH">
+                                <rect key="frame" x="0.0" y="735" width="414" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="HIg-oR-GUR"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-sE-5dh">
+                                <rect key="frame" x="326" y="648" width="68" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="fe4-mB-mym"/>
+                                </constraints>
+                                <state key="normal" image="locationButton"/>
+                                <connections>
+                                    <action selector="dropPinCurrentLocation:" destination="mUi-UJ-iyE" eventType="touchUpInside" id="8xI-QT-j49"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kxU-6v-uaH">
+                                <rect key="frame" x="20" y="667" width="129" height="42"/>
+                                <color key="backgroundColor" red="0.96190267799999996" green="0.65097272399999995" blue="0.1936408281" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="landmARks">
+                                            <attributes>
+                                                <color key="NSColor" red="0.95000961261183547" green="1" blue="0.99057686823816249" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="23" name="Futura-Medium"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="lUq-8m-3cr" kind="show" id="OOp-jm-yx2"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iPA-GK-qTH" userLabel="OrangeView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                 <subviews>
@@ -52,37 +87,23 @@
                                     <constraint firstItem="lHL-Vj-NTr" firstAttribute="centerY" secondItem="iPA-GK-qTH" secondAttribute="centerY" constant="4.5" id="i8N-ZN-Nh6"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tfh-AK-DyH">
-                                <rect key="frame" x="0.0" y="735" width="414" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="HIg-oR-GUR"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-sE-5dh">
-                                <rect key="frame" x="326" y="648" width="68" height="67"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="68" id="fe4-mB-mym"/>
-                                </constraints>
-                                <state key="normal" image="locationButton"/>
-                                <connections>
-                                    <action selector="dropPinCurrentLocation:" destination="mUi-UJ-iyE" eventType="touchUpInside" id="8xI-QT-j49"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Tfh-AK-DyH" firstAttribute="leading" secondItem="4WE-l4-Kpw" secondAttribute="leading" id="3w1-oq-BFd"/>
+                            <constraint firstItem="VGo-sE-5dh" firstAttribute="leading" secondItem="kxU-6v-uaH" secondAttribute="trailing" constant="177" id="8M5-IP-8pa"/>
                             <constraint firstItem="q0z-46-1ct" firstAttribute="trailing" secondItem="VGo-sE-5dh" secondAttribute="trailing" constant="20" id="8ij-fW-vTr"/>
                             <constraint firstItem="iPA-GK-qTH" firstAttribute="leading" secondItem="q0z-46-1ct" secondAttribute="leading" id="AoM-J0-TtD"/>
                             <constraint firstItem="MSz-zz-ITq" firstAttribute="trailing" secondItem="4WE-l4-Kpw" secondAttribute="trailing" id="Co4-1W-yXr"/>
                             <constraint firstItem="MSz-zz-ITq" firstAttribute="top" secondItem="4WE-l4-Kpw" secondAttribute="top" id="OrE-Tl-5Yw"/>
                             <constraint firstItem="Tfh-AK-DyH" firstAttribute="top" secondItem="MSz-zz-ITq" secondAttribute="bottom" id="SFa-Nh-e0j"/>
+                            <constraint firstItem="kxU-6v-uaH" firstAttribute="leading" secondItem="q0z-46-1ct" secondAttribute="leading" constant="20" id="Wgh-H3-0ri"/>
                             <constraint firstItem="iPA-GK-qTH" firstAttribute="top" secondItem="4WE-l4-Kpw" secondAttribute="top" id="Xxr-v2-Mic"/>
                             <constraint firstAttribute="bottom" secondItem="Tfh-AK-DyH" secondAttribute="bottom" id="bnf-V0-ePj"/>
                             <constraint firstItem="iPA-GK-qTH" firstAttribute="trailing" secondItem="q0z-46-1ct" secondAttribute="trailing" id="car-Cq-2ZR"/>
                             <constraint firstItem="MSz-zz-ITq" firstAttribute="leading" secondItem="4WE-l4-Kpw" secondAttribute="leading" id="imV-we-nMD"/>
                             <constraint firstAttribute="trailing" secondItem="Tfh-AK-DyH" secondAttribute="trailing" id="p7T-u9-yGO"/>
+                            <constraint firstItem="Tfh-AK-DyH" firstAttribute="top" secondItem="kxU-6v-uaH" secondAttribute="bottom" constant="26" id="ulD-pL-iYV"/>
                             <constraint firstItem="Tfh-AK-DyH" firstAttribute="top" secondItem="VGo-sE-5dh" secondAttribute="bottom" constant="20" id="xOd-Bf-gQE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q0z-46-1ct"/>
@@ -98,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6Y-RN-oeM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-375.36231884057975" y="-508.69565217391306"/>
+            <point key="canvasLocation" x="81" y="-510"/>
         </scene>
         <!--Pop View Controller-->
         <scene sceneID="hZA-3E-xjT">
@@ -229,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OYw-jP-9rI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1359.2" y="273.39901477832512"/>
+            <point key="canvasLocation" x="-433" y="431"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ItC-Z0-ZfY">
@@ -245,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8v2-EY-rsJ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-375" y="274"/>
+            <point key="canvasLocation" x="81" y="431"/>
         </scene>
     </scenes>
     <resources>
