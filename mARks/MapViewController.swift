@@ -7,94 +7,290 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
+class MapViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    
-    @IBAction func searchButton(_ sender: UIBarButtonItem) {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-        present(searchController, animated: true, completion: nil)
-    }
+    @IBOutlet weak var mapViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pullUpView: UIView!
     
     var locationManager = CLLocationManager()
+    let authorizationStatus = CLLocationManager.authorizationStatus()
+    let regionRadius: Double = 1000
+    
+    var screenSize = UIScreen.main.bounds
+    
+    var spinner: UIActivityIndicatorView?
+    var progressLabel: UILabel?
+    
+    var flowLayout = UICollectionViewFlowLayout()
+    var collectionView: UICollectionView?
+    
+    var imageUrlArray = [String]()
+    var imageArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-        mapView.setRegion(region, animated: true)
-        self.mapView.showsUserLocation = true
-        locationManager.stopUpdatingLocation()
-    }
-    
-    
-    @IBAction func dropPinCurrentLocation(_ sender: UIButton) {
-        
         mapView.delegate = self
-        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+        configureLocationServices()
+        addDoubleTap()
         
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+        collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        
+        registerForPreviewing(with: self, sourceView: collectionView!)
+        
+        pullUpView.addSubview(collectionView!)
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.stopAnimating()
-        
-        searchBar.resignFirstResponder()
-        dismiss(animated: true, completion: nil)
-        
-        let searchRequest = MKLocalSearchRequest()
-        searchRequest.naturalLanguageQuery = searchBar.text
-        
-        let activeSearch = MKLocalSearch(request: searchRequest)
-        
-        activeSearch.start { (response, error) in
-            
-            activityIndicator.stopAnimating()
-            UIApplication.shared.endIgnoringInteractionEvents()
-            
-            if response == nil {
-                print("Error")
-            } else {
-                //let annotations = self.mapView.annotations
-                //self.mapView.removeAnnotation(annotations as! MKAnnotation)
-                
-                let latitude = response?.boundingRegion.center.latitude
-                let longitude = response?.boundingRegion.center.longitude
-                
-                let annotation = MKPointAnnotation()
-                annotation.title = searchBar.text
-                annotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
-                self.mapView.addAnnotation(annotation)
-                
-                let coordinate : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
-                let span = MKCoordinateSpanMake(0.1, 0.1)
-                let region = MKCoordinateRegionMake(coordinate, span)
-                self.mapView.setRegion(region, animated: true)
-
-            }
+    func addDoubleTap() {
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(dropPin(sender:)))
+        doubleTap.numberOfTapsRequired = 2
+        doubleTap.delegate = self
+        mapView.addGestureRecognizer(doubleTap)
+    }
+    
+    func addSwipe() {
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(animateViewDown))
+        swipe.direction = .down
+        pullUpView.addGestureRecognizer(swipe)
+    }
+    
+    func animateViewUp() {
+        mapViewHeightConstraint.constant = 250
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
     }
     
+    @objc func animateViewDown() {
+        cancelAllSessions()
+        mapViewHeightConstraint.constant = 0
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+        
+    }
     
+    func addSpinner() {
+        spinner = UIActivityIndicatorView()
+        spinner?.center = CGPoint(x: (screenSize.width / 2) - ((spinner?.frame.width)! / 2), y: 125)
+        spinner?.activityIndicatorViewStyle = .whiteLarge
+        spinner?.color = #colorLiteral(red: 0.961902678, green: 0.650972724, blue: 0.1936408281, alpha: 1)
+        spinner?.startAnimating()
+        collectionView?.addSubview(spinner!)
+    }
+    
+    func removeSpinner() {
+        if spinner != nil {
+            spinner?.removeFromSuperview()
+        }
+    }
+    
+    func addProgressLabel() {
+        progressLabel = UILabel()
+        progressLabel?.frame = CGRect(x: (screenSize.width / 2) - 120, y: 145, width: 240, height: 40)
+        progressLabel?.font = UIFont(name: "Futura", size: 18)
+        progressLabel?.textColor = #colorLiteral(red: 0.961902678, green: 0.650972724, blue: 0.1936408281, alpha: 1)
+        progressLabel?.textAlignment = .center
+        collectionView?.addSubview(progressLabel!)
+    }
+    
+    func removeProgessLabel() {
+        if progressLabel != nil {
+            progressLabel?.removeFromSuperview()
+        }
+    }
+    
+    @IBAction func dropPinCurrentLocation(_ sender: UIButton) {
+        if authorizationStatus == .authorizedAlways || authorizationStatus == .authorizedWhenInUse {
+            centerMapOnUserLocation()
+        }
+    }
     
 }
+
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let pinAnnotation = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "droppablePin")
+        pinAnnotation.pinTintColor = #colorLiteral(red: 0.961902678, green: 0.650972724, blue: 0.1936408281, alpha: 1)
+        pinAnnotation.animatesDrop = true
+        return pinAnnotation
+    }
+    
+    func centerMapOnUserLocation() {
+        guard let coordinate = locationManager.location?.coordinate else { return }
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate, regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    @objc func dropPin(sender: UITapGestureRecognizer) {
+        removePin()
+        removeSpinner()
+        removeProgessLabel()
+        cancelAllSessions()
+        
+        imageUrlArray = []
+        imageArray = []
+        
+        collectionView?.reloadData()
+        
+        animateViewUp()
+        addSwipe()
+        addSpinner()
+        addProgressLabel()
+        
+        
+        let touchPoint = sender.location(in: mapView)
+        print(touchPoint)
+        let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+        
+        let annotation = DroppablePin(coordinate: touchCoordinate, identifier: "droppablePin")
+        mapView.addAnnotation(annotation)
+                
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(touchCoordinate, regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+        
+        retrieveUrls(forAnnotation: annotation) { (finished) in
+            if finished {
+                self.retrieveImages(handler: { (finished) in
+                    if finished {
+                        self.removeSpinner()
+                        self.removeProgessLabel()
+                        self.collectionView?.reloadData()
+                    }
+                })
+            }
+        }
+        
+        
+    }
+    
+    func removePin() {
+        for annotation in mapView.annotations {
+            mapView.removeAnnotation(annotation)
+        }
+    }
+    
+    func retrieveUrls(forAnnotation annotation: DroppablePin, handler: @escaping (_ status: Bool) -> ()) {
+        Alamofire.request(flickrUrl(forApiKey: flickrApiKey, withAnnotation: annotation, andNumberOfPhotos: 28)).responseJSON { (response) in
+            print(flickrUrl)
+            print(response)
+            guard let json = response.result.value as? Dictionary<String, AnyObject> else { return }
+            let photosDict = json["photos"] as! Dictionary<String,AnyObject>
+            let photosDictArray = photosDict["photo"] as! [Dictionary<String, AnyObject>]
+            for photo in photosDictArray {
+                let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_h_d.jpg"
+                self.imageUrlArray.append(postUrl)
+            }
+            handler(true)
+        }
+        
+    }
+    
+    func retrieveImages(handler: @escaping (_ status: Bool) -> ()) {
+        imageArray = []
+        for url in imageUrlArray {
+            Alamofire.request(url).responseImage(completionHandler: { (response) in
+                guard let image = response.result.value else { return }
+                self.imageArray.append(image)
+                self.progressLabel?.text = "\(self.imageArray.count)/28 Images Downloaded"
+                
+                if self.imageArray.count == self.imageUrlArray.count {
+                    handler(true)
+                }
+            })
+        }
+        
+    }
+    
+    func cancelAllSessions() {
+        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (sessionDataTask, uploadData, downloadData) in
+            sessionDataTask.forEach({ $0.cancel() })
+            downloadData.forEach({ $0.cancel() })
+        }
+    }
+
+}
+extension MapViewController: CLLocationManagerDelegate {
+    //If we are authorized to use location
+    func configureLocationServices() {
+        if authorizationStatus == .notDetermined {
+            locationManager.requestAlwaysAuthorization()
+        } else {
+            return
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        centerMapOnUserLocation()
+    }
+}
+
+extension MapViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // number of items in array
+        return imageArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell else {return UICollectionViewCell() }
+        let imageFromIndex = imageArray[indexPath.row]
+        let imageView = UIImageView(image: imageFromIndex)
+        cell.addSubview(imageView)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopViewController else { return }
+        popVC.initData(forImage: imageArray[indexPath.row])
+        present(popVC, animated: true, completion: nil)
+    }
+}
+
+extension MapViewController: UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = collectionView?.indexPathForItem(at: location), let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
+        
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopViewController else { return nil }
+        
+        popVC.initData(forImage: imageArray[indexPath.row])
+        
+
+        
+        previewingContext.sourceRect = cell.contentView.frame
+        return popVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self)
+    }
+    
+
+}
+
+
+
+
+
+
+
+
+
+

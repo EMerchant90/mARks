@@ -13,7 +13,7 @@ public class ARPOIUI : NSObject {
     //// Cache
     
     private struct Cache {
-        static let locationBlue: UIColor = UIColor(red: 1.000, green: 0.182, blue: 0.001, alpha: 1.000)
+        static let locationBlue: UIColor = UIColor(red: 0.885, green: 0.566, blue: 0.100, alpha: 1.000)
     }
     
     //// Colors
@@ -422,7 +422,6 @@ public class ARPOIUI : NSObject {
         colorBoxPath.close()
         UIColor.darkGray.setFill()
         colorBoxPath.fill()
-        
         
         //// distance label Drawing
         let distanceLabelRect = CGRect(x: frame.minX + frame.width - 63, y: frame.minY + fastFloor((frame.height - 24) * 0.15217 + 0.5), width: 59, height: 24)

@@ -58,7 +58,7 @@ class ARViewController: UIViewController, ARSKViewDelegate {
     func getAndDisplayItemsAroundLocation(_ location: CLLocation, completion:
         @escaping (Int) -> Void) {
         
-        let searchTerm = "tourist_attraction"
+        let searchTerm = "historic_landmark"
         let loader = PlaceLoader()
         
         let anchorDistSpread = anchorDistFarthest - anchorDistNearest
