@@ -15,7 +15,7 @@ struct PlaceLoader {
     func requestPOIsWithGoogleSearch(term: String, location: CLLocation, completion: @escaping (_ items:[[String : Any]]?, _ errorMsg: String?) -> Void) {
         
         let gMapsUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
-        let radiusMeters = 1000
+        let radiusMeters = 15000
         let language = "en"
         
         let params = [
@@ -28,6 +28,7 @@ struct PlaceLoader {
         var uri = gMapsUrl
         let queryString = serializeParamsForRequest(params: params)
         uri = uri + queryString
+        print("This is the link bro...,", uri)
         let url = URL(string: uri)!
         let request = NSMutableURLRequest(url: url)
         print("REQUEST", request)
