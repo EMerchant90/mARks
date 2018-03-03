@@ -153,10 +153,12 @@
 			isa = PBXGroup;
 			children = (
 				8F2358531FCE25D5004A7933 /* mARks.entitlements */,
+				8F5453E51FCE1A630099DA03 /* AppDelegate.swift */,
 				8F3D7B231FD5CA71005A0E19 /* MatrixHelper.swift */,
 				8F3D7B271FD5CA8E005A0E19 /* keys.swift */,
 				8F3D7B291FD5CA9A005A0E19 /* CustomButton.swift */,
 				8F6830BC1FD8AD42000A2C91 /* DroppablePin.swift */,
+				8F3D7B1F1FD5CA50005A0E19 /* ARPOIUI.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -217,7 +219,6 @@
 		8F77E76920179815000D2AD3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8F5453E51FCE1A630099DA03 /* AppDelegate.swift */,
 				8FF8B4421FCFD4860001E425 /* MapViewController.swift */,
 				8FA5A1921FD9F9A900E140E2 /* PopViewController.swift */,
 				8F3D7B2B1FD5CACE005A0E19 /* ARViewController.swift */,
@@ -242,7 +243,6 @@
 				8F3D7B2F1FD5CB87005A0E19 /* Scene.swift */,
 				8F6830BE1FD8DFD2000A2C91 /* PhotoCell.swift */,
 				8F3D7B1D1FD5CA3B005A0E19 /* ARAnnotation.swift */,
-				8F3D7B1F1FD5CA50005A0E19 /* ARPOIUI.swift */,
 				8F3D7B211FD5CA5D005A0E19 /* CustomViews.swift */,
 				8F3D7B251FD5CA82005A0E19 /* PlaceLoader.swift */,
 			);

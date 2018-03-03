@@ -13,7 +13,7 @@ public class ARPOIUI : NSObject {
     //// Cache
     
     private struct Cache {
-        static let locationBlue: UIColor = UIColor(red: 0.885, green: 0.566, blue: 0.100, alpha: 1.000)
+        static let locationBlue: UIColor = UIColor(red: 0.174, green: 0.207, blue: 0.176, alpha: 1.000)
     }
     
     //// Colors
