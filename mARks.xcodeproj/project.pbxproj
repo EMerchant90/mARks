@@ -152,11 +152,10 @@
 		8F3D7B311FD5CBB2005A0E19 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8F5453F01FCE1A640099DA03 /* LaunchScreen.storyboard */,
+				8F5453E51FCE1A630099DA03 /* AppDelegate.swift */,
 				8F2358531FCE25D5004A7933 /* mARks.entitlements */,
-				8F3D7B231FD5CA71005A0E19 /* MatrixHelper.swift */,
-				8F3D7B271FD5CA8E005A0E19 /* keys.swift */,
-				8F3D7B291FD5CA9A005A0E19 /* CustomButton.swift */,
-				8F6830BC1FD8AD42000A2C91 /* DroppablePin.swift */,
+				8F5453EE1FCE1A640099DA03 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -189,7 +188,6 @@
 				8F77E76B2017981C000D2AD3 /* Model */,
 				8F77E76A20179819000D2AD3 /* View */,
 				8F77E76920179815000D2AD3 /* Controller */,
-				8F5453EE1FCE1A640099DA03 /* Assets.xcassets */,
 				8F5453F31FCE1A640099DA03 /* Info.plist */,
 				8F3D7B311FD5CBB2005A0E19 /* Supporting Files */,
 			);
@@ -217,7 +215,6 @@
 		8F77E76920179815000D2AD3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8F5453E51FCE1A630099DA03 /* AppDelegate.swift */,
 				8FF8B4421FCFD4860001E425 /* MapViewController.swift */,
 				8FA5A1921FD9F9A900E140E2 /* PopViewController.swift */,
 				8F3D7B2B1FD5CACE005A0E19 /* ARViewController.swift */,
@@ -229,7 +226,12 @@
 		8F77E76A20179819000D2AD3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8F5453F01FCE1A640099DA03 /* LaunchScreen.storyboard */,
+				8F3D7B211FD5CA5D005A0E19 /* CustomViews.swift */,
+				8F3D7B1F1FD5CA50005A0E19 /* ARPOIUI.swift */,
+				8F3D7B1D1FD5CA3B005A0E19 /* ARAnnotation.swift */,
+				8F6830BE1FD8DFD2000A2C91 /* PhotoCell.swift */,
+				8F3D7B2F1FD5CB87005A0E19 /* Scene.swift */,
+				8F6830BC1FD8AD42000A2C91 /* DroppablePin.swift */,
 				8F5453EB1FCE1A640099DA03 /* Main.storyboard */,
 				8F3D7B1B1FD5CA10005A0E19 /* Scene.sks */,
 			);
@@ -239,11 +241,9 @@
 		8F77E76B2017981C000D2AD3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8F3D7B2F1FD5CB87005A0E19 /* Scene.swift */,
-				8F6830BE1FD8DFD2000A2C91 /* PhotoCell.swift */,
-				8F3D7B1D1FD5CA3B005A0E19 /* ARAnnotation.swift */,
-				8F3D7B1F1FD5CA50005A0E19 /* ARPOIUI.swift */,
-				8F3D7B211FD5CA5D005A0E19 /* CustomViews.swift */,
+				8F3D7B231FD5CA71005A0E19 /* MatrixHelper.swift */,
+				8F3D7B271FD5CA8E005A0E19 /* keys.swift */,
+				8F3D7B291FD5CA9A005A0E19 /* CustomButton.swift */,
 				8F3D7B251FD5CA82005A0E19 /* PlaceLoader.swift */,
 			);
 			path = Model;
@@ -705,7 +705,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -763,7 +763,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -779,7 +779,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 45YATE627L;
 				INFOPLIST_FILE = mARks/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EjazMerchant.mARks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -796,7 +796,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 45YATE627L;
 				INFOPLIST_FILE = mARks/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EjazMerchant.mARks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
