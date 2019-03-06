@@ -81,14 +81,14 @@ struct PlaceLoader {
         
         var returnPOIs = [[String: Any]]()
         
-        let littleton = generatePOIDictFor(title: "Littleton", location: CLLocation(latitude: 39.61402, longitude: -105.0178))
+        let littleton = generatePOIDictFor(title: "Littleton", location: CLLocation(latitude: 33.8411247, longitude: -84.3781764), image: #imageLiteral(resourceName: "notpaid"))
         returnPOIs.append(littleton)
-        let work = generatePOIDictFor(title: "Work", location: CLLocation(latitude: 39.75053, longitude: -104.99957))
+        let work = generatePOIDictFor(title: "Work", location: CLLocation(latitude: 33.8410247, longitude: -84.3786559), image: #imageLiteral(resourceName: "freeparking"))
         returnPOIs.append(work)
-        let boulder = generatePOIDictFor(title: "Boulder", location: CLLocation(latitude: 40.01762, longitude: -105.25027))
-        returnPOIs.append(boulder)
-        let chatfield = generatePOIDictFor(title: "Chatfield", location: CLLocation(latitude: 39.5476, longitude:-105.07084))
-        returnPOIs.append(chatfield)
+//        let boulder = generatePOIDictFor(title: "Boulder", location: CLLocation(latitude: 40.01762, longitude: -105.25027))
+//        returnPOIs.append(boulder)
+//        let chatfield = generatePOIDictFor(title: "Chatfield", location: CLLocation(latitude: 39.5476, longitude:-105.07084))
+//        returnPOIs.append(chatfield)
         
         if returnPOIs.count > 0 {
             completion(returnPOIs, nil)
@@ -98,15 +98,16 @@ struct PlaceLoader {
         }
     }
     
-    func generatePOIDictFor(title: String, location: CLLocation) -> [String: Any] {
+    func generatePOIDictFor(title: String, location: CLLocation, image: UIImage ) -> [String: Any] {
         let poi = [
             "name": title,
             "geometry": [
                 "location": [
                     "lat": location.coordinate.latitude,
-                    "lng": location.coordinate.longitude
-                    ] as [String: Any]
+                    "lng": location.coordinate.longitude,
                 ] as [String: Any]
+            ] as [String: Any],
+            "image": image
             ] as [String: Any]
         return poi
     }

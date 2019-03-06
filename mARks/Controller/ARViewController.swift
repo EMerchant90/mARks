@@ -24,6 +24,8 @@ class ARViewController: UIViewController, ARSKViewDelegate {
     let anchorDegreesNearest: Double = 0
     let anchorDegreesFarthest: Double = 15
     
+    var bs = 1
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,14 +61,15 @@ class ARViewController: UIViewController, ARSKViewDelegate {
     func getAndDisplayItemsAroundLocation(_ location: CLLocation, completion:
         @escaping (Int) -> Void) {
         
-        let searchTerm = "tourist_attraction"
+        let searchTerm = "library"
         let loader = PlaceLoader()
         
         let anchorDistSpread = anchorDistFarthest - anchorDistNearest
-        let anchorHeightSpread = anchorDegreesFarthest - anchorDegreesNearest
+        let anchorHeightSpread = 00.00
+            //anchorDegreesFarthest - anchorDegreesNearest
 
-        //loader.getStaticPOIsFor(location: location) { (resultPOIs, errMsg) in
-        loader.requestPOIsWithGoogleSearch(term: searchTerm, location: location) { (resultPOIs, errMsg) in
+        loader.getStaticPOIsFor(location: location) { (resultPOIs, errMsg) in
+        //loader.requestPOIsWithGoogleSearch(term: searchTerm, location: location) { (resultPOIs, errMsg) in
             if let err = errMsg {
                 self.appDelegate.alertWithTitle("Error", message: err)
                 completion(0)
@@ -119,6 +122,7 @@ class ARViewController: UIViewController, ARSKViewDelegate {
                     self.annotations.append(annot)
                     //print("add anchor for title: \(title) and id \(anchor.identifier), bearing: \(bearing)˚, distance: \(anchorDist)")
                     self.sceneView.session.add(anchor: anchor)
+                    let image = poi["image"] as! UIImage
                 }
                 completion(pois.count)
             }
@@ -141,8 +145,19 @@ class ARViewController: UIViewController, ARSKViewDelegate {
         }
         if annots.count > 0 {
             let annot = annots.first
-            let image = annot?.getTooltipImage()
-            let tooltip = SKTexture(image: image!)
+            //let image = UIImage[logoImage]
+            //let image = annot?.gettooltip()
+            //let image = annot?.logoImage
+            var image = UIImage(imageLiteralResourceName: "notpaid")
+            if(bs == 1) {
+                image = UIImage(imageLiteralResourceName: "notpaid")
+                bs = 0
+            } else {
+                image = UIImage(imageLiteralResourceName: "freeparking")
+                bs = 1
+            }
+            //let image = UIImage(imageLiteralResourceName: "notpaid")
+            let tooltip = SKTexture(image: image)
             let sprite = SKSpriteNode(texture: tooltip)
             sprite.name = "poi"
             return sprite
